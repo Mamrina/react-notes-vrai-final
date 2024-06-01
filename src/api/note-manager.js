@@ -33,6 +33,19 @@ export class NoteManager {
     return data;
   }
 
+  static async update(id, note) {
+    const response = await fetch(BASE_API_URL + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": NoteManager.token,
+      },
+      body: JSON.stringify(note)
+    });
+    const data = await response.json();
+    return data;
+  }
+
   static async remove(id) {
     const response = await fetch(BASE_API_URL + id, {
       method: "DELETE",
