@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 
 import ArrayLib from '../lib/array-lib'
 
+import '../styles/styles.css';
+
 // Gestionnaire d'entités
 import { NoteManager } from '../api/note-manager'
 
@@ -88,15 +90,17 @@ function Notes() {
 
   return (
     <>
+    <div className="notes-container">
       <Counter notes={notes} />
       <AddNoteForm onNoteAdded={onNoteAddedHandler} />
       <Filters filters={filters} onFilterChanged={onFilterChangedHandler} />
-      <div>
+      <div className="sort-buttons">
         <button onClick={() => sortNotes('asc')}>Tri alphabétique A → Z</button>
         <button onClick={() => sortNotes('desc')}>Tri alphabétique Z → A</button>
         <p>Choix du tri : {sortOrder === 'asc' ? 'Croissant' : sortOrder === 'desc' ? 'Décroissant' : 'Aucun'}</p>
       </div>
       <NoteList notes={notes} onRemoveBtn={onRemoveBtnHandler} />
+    </div>
     </>
   )
 }

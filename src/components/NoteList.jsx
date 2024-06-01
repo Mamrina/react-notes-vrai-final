@@ -10,7 +10,7 @@ export default function NoteList({ notes, onRemoveBtn }) {
 
   return (
     <>
-      <p>A NOTE LIST</p>
+      <p>Ma liste :</p>
       <ul>{listNotes}</ul>
     </>
   )

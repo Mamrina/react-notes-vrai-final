@@ -10,8 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "concrete.css": "^2.1.1",
-    "normalize.css": "^8.0.1",
+    // "concrete.css": "^2.1.1",
+    // "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

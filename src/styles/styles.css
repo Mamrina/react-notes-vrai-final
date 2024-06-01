@@ -1,0 +1,96 @@
+/* src/styles/styles.css */
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* Styles pour le conteneur principal */
+.notes-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #edb0b0a1;
+    border-radius: 8px;
+  }
+  
+  /* Styles pour les boutons de tri */
+  .sort-buttons {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+  
+  .sort-buttons button {
+    padding: 0px 10px;
+    background-color: #c19595;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .sort-buttons button:hover {
+    background-color: #e5867d;
+  }
+  
+  /* Styles pour les notes */
+  .note {
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .note p {
+    margin: 0;
+  }
+  
+  /* Styles pour le compteur de notes */
+  .counter {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  /* Styles pour le formulaire d'ajout de note */
+  .add-note-form {
+    margin-bottom: 20px;
+  }
+  
+  /* .add-note-form input[type="text"] {
+    padding: 10px;
+    width: calc(100% - 22px);
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .add-note-form button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  } */
+  
+  .add-note-form button:hover {
+    background-color: #218838;
+  }
+  
+  /* Styles pour les filtres */
+  .filters {
+    margin-bottom: 20px;
+  }
+  
+  .filters input[type="text"] {
+    padding: 10px;
+    width: calc(100% - 22px);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  

@@ -11,14 +11,14 @@ export default function App() {
   if (authenticated) {
     return (
       <>
-        <h1>Application Notes</h1>
+        <h1>Mon app' notes</h1>
         <Notes />
       </>
     )
   } else {
     return (
       <>
-        <h1>Application Notes</h1>
+        <h1>Mon app' notes</h1>
         <Authenticate onAuthenticatedChanged={onAuthenticatedChangedHandler} />
       </>
     )
