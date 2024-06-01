@@ -17,6 +17,7 @@ function Notes() {
   const [notesRAW, setNotesRAW] = useState([]);
   const [notes, setNotes] = useState([...notesRAW]);
   const [filters, filtersSetter] = useState({ keyword: '' }); // ajouter ici d'autre propriétés pour filter d'autre façons.
+  const [sortOrder, setSortOrder] = useState('asc');
 
   // Charger les données dès juste après la création du composant.
   // Comme on fait un appel à un setState pas d'autre chose que de passer par un hook userEffect.
@@ -73,11 +74,27 @@ function Notes() {
     }
   }
 
+  function sortNotes(order) {
+    const sortedNotes = [...notes].sort((a, b) => {
+      if (order === 'asc') {
+        return a.text.localeCompare(b.text);
+      } else {
+        return b.text.localeCompare(a.text);
+      }
+    });
+    setSortOrder(order);
+    setNotes(sortedNotes);
+  }
+
   return (
     <>
       <Counter notes={notes} />
       <AddNoteForm onNoteAdded={onNoteAddedHandler} />
       <Filters filters={filters} onFilterChanged={onFilterChangedHandler} />
+      <div>
+        <button onClick={() => sortNotes('asc')}>Trier par ordre croissant</button>
+        <button onClick={() => sortNotes('desc')}>Trier par ordre décroissant</button>
+      </div>
       <NoteList notes={notes} onRemoveBtn={onRemoveBtnHandler} />
     </>
   )
