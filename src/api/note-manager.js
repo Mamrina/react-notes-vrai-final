@@ -1,22 +1,37 @@
-import { Note } from '../models/note';
+import { Note } from "../models/note";
 
-const BASE_API_URL = import.meta.env.VITE_BACKEND_URL + '/notes/';
+const BASE_API_URL = import.meta.env.VITE_BACKEND_URL + "/notes/";
 
 export class NoteManager {
 
+
+  // Méthode statique pour récupérer le token
+  // getter
+  static get token() {
+    return localStorage.getItem('jwtToken');
+  }
+  // setter
+  static set token(value) {
+    localStorage.setItem('jwtToken', value);
+  }
+
   static async list() {
     // le return est important
-    return fetch(BASE_API_URL, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": NoteManager.token
-      }
-    })
-    .then(response => response.json())
-    .then(notesData => notesData.map(note => new Note(note.id, note.text)))
-    // voir https://javascript.info/promise-error-handling
-    .catch(error => window.alert(error))
+    return (
+      fetch(BASE_API_URL, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: NoteManager.token,
+        },
+      })
+        .then((response) => response.json())
+        .then((notesData) =>
+          notesData.map((note) => new Note(note.id, note.text))
+        )
+        // voir https://javascript.info/promise-error-handling
+        .catch((error) => window.alert(error))
+    );
   }
 
   static async create(note) {
@@ -25,9 +40,9 @@ export class NoteManager {
       // headers: HEADERS_API
       headers: {
         "Content-Type": "application/json",
-        "Authorization": NoteManager.token
+        Authorization: NoteManager.token,
       },
-      body: JSON.stringify(note)
+      body: JSON.stringify(note),
     });
     const data = await response.json();
     return data;
@@ -38,9 +53,9 @@ export class NoteManager {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": NoteManager.token,
+        Authorization: NoteManager.token,
       },
-      body: JSON.stringify(note)
+      body: JSON.stringify(note),
     });
     const data = await response.json();
     return data;
@@ -52,8 +67,8 @@ export class NoteManager {
       // headers: HEADERS_API
       headers: {
         "Content-Type": "application/json",
-        "Authorization": NoteManager.token
-      }
+        Authorization: NoteManager.token,
+      },
     });
     const data = await response.json();
     return data;
