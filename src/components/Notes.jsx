@@ -12,8 +12,9 @@ import Counter from './Counter'
 import Filters from './Filters'
 import NoteList from './NoteList'
 import AddNoteForm from './AddNoteForm'
+import Disconnect from './Disconnet';
 
-function Notes() {
+function Notes({ onAuthenticatedChanged }) {
 
   // Déclaration des états du composant.
   const [notesRAW, setNotesRAW] = useState([]);
@@ -91,6 +92,7 @@ function Notes() {
   return (
     <>
     <div className="notes-container">
+      <Disconnect onAuthenticatedChanged={onAuthenticatedChanged} />
       <Counter notes={notes} />
       <AddNoteForm onNoteAdded={onNoteAddedHandler} />
       <Filters filters={filters} onFilterChanged={onFilterChangedHandler} />

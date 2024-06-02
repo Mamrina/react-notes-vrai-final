@@ -15,6 +15,10 @@ export class NoteManager {
     localStorage.setItem('jwtToken', value);
   }
 
+  static removeToken() {
+    localStorage.removeItem('jwtToken');
+  }
+
   static async list() {
     // le return est important
     return (

@@ -6,20 +6,20 @@ import Notes from "./components/Notes";
 export default function App() {
   const [authenticated, setAuthenticated] = useState(false);
 
-  const onAuthenticatedChangedHandler = newAuthValue => setAuthenticated(newAuthValue);
+  const onAuthenticatedChanged = newAuthValue => setAuthenticated(newAuthValue);
 
   if (authenticated) {
     return (
       <>
         <h1>Mon app' notes</h1>
-        <Notes />
+        <Notes onAuthenticatedChanged={setAuthenticated}/>
       </>
     )
   } else {
     return (
       <>
         <h1>Mon app' notes</h1>
-        <Authenticate onAuthenticatedChanged={onAuthenticatedChangedHandler} />
+        <Authenticate onAuthenticatedChanged={setAuthenticated} />
       </>
     )
   }

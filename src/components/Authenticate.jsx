@@ -30,15 +30,17 @@ export default function Authenticate({ onAuthenticatedChanged }) {
   }
 
   return (
-    <form onSubmit={onLoginFormSubmitHAndler}>
-      <fieldset>
-        <legend>Authentification</legend>
-        <label htmlFor="username">Nom d'utilisateur</label>
-        <input type="text" name="username" />
-        <label htmlFor="password">Mot de passe</label>
-        <input type="password" name="password" />
-        <button type="submit">Se connecter</button>
-      </fieldset>
-    </form>
+    <div className="notes-container">
+      <form onSubmit={onLoginFormSubmitHAndler}>
+        <fieldset>
+          <legend>Authentification</legend>
+          <label htmlFor="username">Nom d'utilisateur</label>
+          <input type="text" name="username" />
+          <label htmlFor="password">Mot de passe</label>
+          <input type="password" name="password" />
+          <button type="submit">Se connecter</button>
+        </fieldset>
+      </form>
+    </div>
   )
 }
