@@ -3,14 +3,14 @@ import { useState } from "react";
 /**
  * Composant responsable de la saisie d'une nouvelle note
  * Une fonction callback pourra être spécifier
- * @param {{ formSubmitCallback: void; }} * une fonction callback
+ * @param {{ formSubmitCallback: void, categories: Array }} * une fonction callback
  */
-export default function AddNoteForm({ onNoteAdded }) {
+export default function AddNoteForm({ onNoteAdded, categories }) {
 
-  const [newNote, newNoteSetter] = useState({ text: 'nouvelle note' });
+  const [newNote, newNoteSetter] = useState({ text: 'nouvelle note', category_id: ''});
 
   const resetForm = () => {
-
+    newNoteSetter({ text: '', category_id: '' });
   }
 
   // Gestion du SubmitEvent du formulaire
@@ -26,7 +26,8 @@ export default function AddNoteForm({ onNoteAdded }) {
     // @url https://developer.mozilla.org/fr/docs/Web/API/FormData
     const formData = new FormData(form);
     const newNote = {
-      text: formData.get('text')
+      text: formData.get('text'),
+      category_id: formData.get('category_id')
     }
 
     // appel de la call callback en lui fournissant les bonnes valeurs
@@ -47,6 +48,14 @@ export default function AddNoteForm({ onNoteAdded }) {
       <fieldset>
         <legend>Ajouter une nouvelle note</legend>
         <input name="text" type="text" />
+        <select name="category_id" required>
+          <option value="">Choisir une catégorie</option>
+          {categories.map(category => (
+            <option key={category.id} value={category.id}>
+              {category.text}
+            </option>
+          ))}
+        </select>
         <input type="submit" value="Ajouter" />
       </fieldset>
     </form>

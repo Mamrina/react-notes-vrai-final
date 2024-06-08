@@ -21,6 +21,7 @@ function Notes({ onAuthenticatedChanged }) {
   const [notes, setNotes] = useState([...notesRAW]);
   const [filters, filtersSetter] = useState({ keyword: '' }); // ajouter ici d'autre propriétés pour filter d'autre façons.
   const [sortOrder, setSortOrder] = useState('');
+  const [categories, setCategories] = useState([]);
 
   // Charger les données dès juste après la création du composant.
   // Comme on fait un appel à un setState pas d'autre chose que de passer par un hook userEffect.
@@ -30,6 +31,9 @@ function Notes({ onAuthenticatedChanged }) {
     NoteManager.list().then(loadedNotes => {
       setNotesRAW(loadedNotes);
       setNotes(loadedNotes);
+    });
+    NoteManager.listCategories().then(loadedCategories => {
+      setCategories(loadedCategories);
     });
   }, []);
   // le tableau vide fait que nous n'attendons pas qu'un setState précis soit
@@ -94,7 +98,7 @@ function Notes({ onAuthenticatedChanged }) {
     <div className="notes-container">
       <Disconnect onAuthenticatedChanged={onAuthenticatedChanged} />
       <Counter notes={notes} />
-      <AddNoteForm onNoteAdded={onNoteAddedHandler} />
+      <AddNoteForm onNoteAdded={onNoteAddedHandler} categories={categories} />
       <Filters filters={filters} onFilterChanged={onFilterChangedHandler} />
       <div className="sort-buttons">
         <button onClick={() => sortNotes('asc')}>Tri alphabétique A → Z</button>

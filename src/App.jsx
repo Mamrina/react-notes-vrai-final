@@ -12,14 +12,14 @@ export default function App() {
     return (
       <>
         <h1>Mon app' notes</h1>
-        <Notes onAuthenticatedChanged={setAuthenticated}/>
+        <Notes onAuthenticatedChanged={onAuthenticatedChanged}/>
       </>
     )
   } else {
     return (
       <>
         <h1>Mon app' notes</h1>
-        <Authenticate onAuthenticatedChanged={setAuthenticated} />
+        <Authenticate onAuthenticatedChanged={onAuthenticatedChanged} />
       </>
     )
   }
