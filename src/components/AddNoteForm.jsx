@@ -7,7 +7,7 @@ import { useState } from "react";
  */
 export default function AddNoteForm({ onNoteAdded, categories }) {
 
-  const [newNote, newNoteSetter] = useState({ text: 'nouvelle note', category_id: ''});
+  const [newNote, newNoteSetter] = useState({ text: '', category_id: ''});
 
   const resetForm = () => {
     newNoteSetter({ text: '', category_id: '' });

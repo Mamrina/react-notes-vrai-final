@@ -1,8 +1,6 @@
 import { Note } from "../models/note";
 
 const BASE_API_URL = import.meta.env.VITE_BACKEND_URL + "/notes/";
-const BASE_CATEGORY_URL = import.meta.env.VITE_BACKEND_URL + "/categories/";
-
 
 export class NoteManager {
   // Méthode statique pour récupérer le token
@@ -80,7 +78,7 @@ export class NoteManager {
 
   static async listCategories() {
     return (
-      fetch(BASE_CATEGORY_URL, {
+      fetch(BASE_API_URL, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -4,6 +4,7 @@ export default function NoteList({ notes, onRemoveBtn }) {
   const listNotes = notes.map((note, index) =>
     <li key={index}>{note.text}
       &nbsp;
+      {note.category_text}
       <button onClick={(event) => onRemoveBtn(note)}>x</button>
     </li>
   );
